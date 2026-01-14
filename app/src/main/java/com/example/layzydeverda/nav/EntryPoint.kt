@@ -1,0 +1,40 @@
+package com.example.layzydeverda.nav
+
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import com.example.lazy_loading.view.CountryDetail
+import com.example.lazy_loading.view.CountryList
+import com.example.lazy_loading.viewModel.ApiViewModel
+
+@Composable
+fun EntryPoint(navigationController: NavController, viewModel: ApiViewModel) {
+    NavHost(
+        navController = navigationController as NavHostController,
+        startDestination = Routes.CountryListScreen.route
+    ) {
+        composable(Routes.CountryListScreen.route) {
+            CountryList(navigationController, viewModel)
+        }
+
+        composable(
+            Routes.CountryDetailScreen.route,
+            arguments = listOf(
+                navArgument("countryName") {
+                    type = NavType.StringType
+                }
+            )
+        ) { backStackEntry ->
+            CountryDetail(
+                navController = navigationController,
+                viewModel = viewModel,
+                countryName = backStackEntry.arguments?.getString("countryName").orEmpty()
+            )
+        }
+    }
+}
