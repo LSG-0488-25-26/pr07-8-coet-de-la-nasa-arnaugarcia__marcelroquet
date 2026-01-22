@@ -19,16 +19,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.example.layzydeverda.viewModel.ApiViewModel
 
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun CountryDetail(navController: NavController, viewModel: ApiViewModel, countryName: String,modifier: Modifier = Modifier){
-    val countries by viewModel.countries.observeAsState(emptyList())
-    val country = remember { countries.find { it.name == countryName } }
+
+    val countries by viewModel.countryList.observeAsState(emptyList())
+    val country = remember { countries.find { it.name.common == countryName  } }
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -40,18 +45,18 @@ fun CountryDetail(navController: NavController, viewModel: ApiViewModel, country
             verticalArrangement = Arrangement.Center
         ) {
             if (country != null) {
-                Image(
-                    painter = painterResource(id = country.flag),
-                    contentDescription = country.name,
+                GlideImage(
+                    model = country.flags.png,
+                    contentDescription = country.flags.alt,
                     modifier = Modifier
-                        .size(200.dp)
-
+                        .size(200.dp),
+                    contentScale = ContentScale.Crop
                 )
 
                 Spacer(modifier = Modifier.height(20.dp))
 
                 Text(
-                    text = country.name,
+                    text = country.name.common,
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -59,7 +64,7 @@ fun CountryDetail(navController: NavController, viewModel: ApiViewModel, country
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "Capital: ${country.capital}",
+                    text = "Capital: ${country.capital.first()}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Medium,
                 )

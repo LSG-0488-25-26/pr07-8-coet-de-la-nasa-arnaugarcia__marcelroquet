@@ -1,5 +1,6 @@
 package com.example.layzydeverda.model
 
 data class Flags(
-    val png: String
+    val png: String,
+    val alt: String
 )

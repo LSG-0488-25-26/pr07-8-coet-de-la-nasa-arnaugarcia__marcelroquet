@@ -10,17 +10,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.text.font.FontWeight
+import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
+import com.bumptech.glide.integration.compose.GlideImage
 import com.example.layzydeverda.model.Country
+@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun CountryItem(country: Country, onItemSelected: (String) -> Unit) {
     Card(
         border = BorderStroke(1.dp, androidx.compose.ui.graphics.Color.LightGray),
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { onItemSelected(country.name) }
+            .clickable { onItemSelected(country.name.common) }
             .padding(8.dp)
             .height(100.dp)
     ) {
@@ -30,17 +34,19 @@ fun CountryItem(country: Country, onItemSelected: (String) -> Unit) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            Image(
-                painter = painterResource(id = country.flag),
-                contentDescription = "Flag of ${country.name}",
-                modifier = Modifier.size(80.dp)
+            GlideImage(
+                model = country.flags.png,
+                contentDescription = country.flags.alt,
+                modifier = Modifier.size(80.dp),
+                contentScale = ContentScale.Crop
             )
+
             Spacer(modifier = Modifier.width(16.dp))
             Column(
                 modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = country.name,
+                    text = country.name.common,
                     fontWeight = FontWeight.Bold,
                     fontSize = MaterialTheme.typography.titleLarge.fontSize
                 )

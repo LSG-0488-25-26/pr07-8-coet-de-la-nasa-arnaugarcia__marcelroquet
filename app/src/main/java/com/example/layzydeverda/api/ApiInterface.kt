@@ -12,10 +12,10 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiInterface {
-    @GET("all")
+    @GET("all?fields=name,capital,region,population,flags")
     suspend fun getCountries(): Response<List<Country>>
     companion object {
-        val BASE_URL = "https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags"
+        val BASE_URL = "https://restcountries.com/v3.1/"
         fun create(): ApiInterface {
             val client = OkHttpClient.Builder().build()
             val retrofit = Retrofit.Builder()
