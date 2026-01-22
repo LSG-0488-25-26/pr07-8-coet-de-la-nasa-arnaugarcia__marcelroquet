@@ -13,7 +13,7 @@ import retrofit2.http.POST
 
 interface ApiInterface {
     @GET("all")
-    suspend fun getCountries(): Response<Country>
+    suspend fun getCountries(): Response<List<Country>>
     companion object {
         val BASE_URL = "https://restcountries.com/v3.1/all?fields=name,capital,region,population,flags"
         fun create(): ApiInterface {
