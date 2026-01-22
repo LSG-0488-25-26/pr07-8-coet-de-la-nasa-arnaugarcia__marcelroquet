@@ -10,7 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.layzydeverda.view.CountryDetail
 import com.example.lazy_loading.view.CountryList
-import com.example.lazy_loading.viewModel.ApiViewModel
+import com.example.layzydeverda.viewModel.ApiViewModel
 
 @Composable
 fun EntryPoint(navigationController: NavController, viewModel: ApiViewModel) {
