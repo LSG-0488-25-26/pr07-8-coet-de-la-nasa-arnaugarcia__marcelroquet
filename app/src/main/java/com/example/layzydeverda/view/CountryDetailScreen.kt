@@ -1,5 +1,6 @@
 package com.example.layzydeverda.view
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -36,7 +37,8 @@ fun CountryDetail(navController: NavController, viewModel: ApiViewModel, country
     Box(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(16.dp)
+            .background(Color.Black),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -66,6 +68,7 @@ fun CountryDetail(navController: NavController, viewModel: ApiViewModel, country
                     text = "Capital: ${country.capital}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Medium,
+                    color = Color.White
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -74,6 +77,7 @@ fun CountryDetail(navController: NavController, viewModel: ApiViewModel, country
                     text = "Població: ${country.population}",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Medium,
+                    color = Color.White
                 )
 
                 Spacer(modifier = Modifier.height(32.dp))
@@ -90,7 +94,8 @@ fun CountryDetail(navController: NavController, viewModel: ApiViewModel, country
                 onClick = { navController.popBackStack() },
                 modifier = Modifier.padding(top = 20.dp)
             ) {
-                Text("Tornar enrere", fontSize = 18.sp)
+                Text("Tornar enrere", fontSize = 18.sp,
+                    color = Color.White)
             }
         }
     }

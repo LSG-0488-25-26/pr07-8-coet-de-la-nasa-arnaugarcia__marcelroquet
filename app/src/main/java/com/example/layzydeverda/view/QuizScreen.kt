@@ -1,6 +1,7 @@
 package com.example.layzydeverda.view
 
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,7 +41,9 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(40.dp),
+            .background(Color.Black)
+            .padding(40.dp)
+            ,
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -55,7 +58,8 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Text("What country is this flag from?")
+            Text("What country is this flag from?",
+                color = Color.White)
             Spacer(modifier = Modifier.height(50.dp))
 
             GlideImage(
@@ -83,7 +87,8 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                 {
                     Text(
                         text = country.answers[0],
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = Color.White
                     )
                 }
                 Button(
@@ -96,7 +101,8 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                 {
                     Text(
                         text = country.answers[1],
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = Color.White
                     )
                 }
             }
@@ -116,7 +122,8 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                 {
                     Text(
                         text = country.answers[2],
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = Color.White
                     )
                 }
                 Button(
@@ -129,7 +136,8 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                 {
                     Text(
                         text = country.answers[3],
-                        textAlign = TextAlign.Center
+                        textAlign = TextAlign.Center,
+                        color = Color.White
                     )
                 }
             }
