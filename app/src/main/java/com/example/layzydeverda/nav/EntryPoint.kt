@@ -9,17 +9,17 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.layzydeverda.view.CountryDetail
-import com.example.lazy_loading.view.CountryList
+import com.example.layzydeverda.view.HomeScreen
 import com.example.layzydeverda.viewModel.ApiViewModel
 
 @Composable
 fun EntryPoint(navigationController: NavController, viewModel: ApiViewModel) {
     NavHost(
         navController = navigationController as NavHostController,
-        startDestination = Routes.CountryListScreen.route
+        startDestination = Routes.Home.route
     ) {
-        composable(Routes.CountryListScreen.route) {
-            CountryList(navigationController, viewModel)
+        composable(Routes.Home.route) {
+            HomeScreen(navigationController, viewModel)
         }
 
         composable(
