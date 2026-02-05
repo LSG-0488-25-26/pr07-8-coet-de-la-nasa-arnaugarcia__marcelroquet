@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
 }
 
 android {
@@ -44,19 +45,28 @@ android {
 dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:1.7.5")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
+    //Room
+    implementation("androidx.room:room-runtime:2.6.1" )
+    implementation("androidx.room:room-ktx:2.6.1" )
+    kapt("androidx.room:room-compiler:2.6.1" )
+    //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
+    implementation("androidx.compose.material:material:1.6.1")
+    implementation("androidx.compose.material:material-icons-core:1.5.0")
+    implementation("androidx.compose.material:material-icons-extended:1.5.0")
     //LIVEDATA
     implementation("androidx.compose.runtime:runtime-livedata:1.7.5")
-//RETROFIT
+    //RETROFIT
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
-//CORRUTINES
+    //CORRUTINES
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
-//GLIDE
+    //GLIDE
     implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
+    implementation(libs.androidx.material3)
     testImplementation("junit:junit:4.13.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
