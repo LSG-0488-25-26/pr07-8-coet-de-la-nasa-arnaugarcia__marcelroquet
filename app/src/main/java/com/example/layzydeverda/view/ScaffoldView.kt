@@ -11,17 +11,20 @@ import com.example.layzydeverda.viewModel.ApiViewModel
 import com.example.layzydeverda.viewModel.ScaffoldViewModel
 
 @Composable
-fun ScaffoldView(scaffoldViewModel: ScaffoldViewModel, apiViewModel: ApiViewModel, navController: NavHostController){
-    Scaffold (
+fun ScaffoldView(
+    scaffoldViewModel: ScaffoldViewModel,
+    apiViewModel: ApiViewModel,
+    navController: NavHostController
+) {
+    Scaffold(
         topBar = { MyTopAppBar(navController, scaffoldViewModel, apiViewModel) },
         bottomBar = { MyBottomBar(scaffoldViewModel, navController) }
-    )
-    { paddingValues ->
+    ) { paddingValues ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-        ){
+        ) {
             MyNavHost(navController, apiViewModel)
         }
     }

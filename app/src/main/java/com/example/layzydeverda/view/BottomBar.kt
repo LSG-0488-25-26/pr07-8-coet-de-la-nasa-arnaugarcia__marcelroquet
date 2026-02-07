@@ -1,12 +1,17 @@
 package com.example.layzydeverda.view
 
+import android.content.res.Configuration
+import androidx.compose.foundation.layout.height
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.layzydeverda.viewModel.ScaffoldViewModel
@@ -16,15 +21,33 @@ fun MyBottomBar(
     myViewModel: ScaffoldViewModel,
     navigationController: NavHostController
 ) {
-    val bottomNavigationItems by myViewModel.bottomNavigationItems.observeAsState(emptyList())
+    val bottomNavigationItems by myViewModel
+        .bottomNavigationItems
+        .observeAsState(emptyList())
 
-    NavigationBar(containerColor = Color.DarkGray, contentColor = Color.White) {
+    val configuration = LocalConfiguration.current
+    val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+    val barHeight = if (isLandscape) 48.dp else 80.dp
+
+    NavigationBar(
+        modifier = Modifier.height(barHeight),
+        containerColor = Color.DarkGray,
+        contentColor = Color.White
+    ) {
         val navBackEntry by navigationController.currentBackStackEntryAsState()
         val currentRoute = navBackEntry?.destination?.route
 
         bottomNavigationItems.forEach { item ->
             NavigationBarItem(
-                icon = { Icon(item.icon, contentDescription = null) },
+
+                icon = {
+                    Icon(
+                        imageVector = item.icon,
+                        contentDescription = null
+
+                    )
+                },
                 selected = currentRoute == item.route,
                 onClick = {
                     if (currentRoute != item.route) {
