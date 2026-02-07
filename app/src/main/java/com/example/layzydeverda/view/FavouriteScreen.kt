@@ -3,7 +3,9 @@ package com.example.layzydeverda.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 //noinspection UsingMaterialAndMaterial3Libraries
@@ -29,23 +31,30 @@ fun FavoriteScreen(navController: NavController, viewModel: ApiViewModel) {
             .fillMaxWidth()
             .background(Color.DarkGray)
     ) {
-        items(favoriteCountries) { country ->
-            CountryItem(
-                country = country,
-                onItemSelected = {
-                    navController.navigate(
-                        Routes.CountryDetailScreen.createRoute(it)
-                    )
-                },
-                onToggleFavourite = {
-                    viewModel.toggleFavourite(it)
-                },
-                dismissable = true
-            )
-            Divider(
-                color = Color.LightGray,
-                thickness = 1.dp
-            )
+        if (favoriteCountries.isEmpty()) {
+            item {
+                EmptyFavoritesMessage()
+            }
+        } else {
+            items(favoriteCountries) { country ->
+                CountryItem(
+                    country = country,
+                    onItemSelected = {
+                        navController.navigate(
+                            Routes.CountryDetailScreen.createRoute(it)
+                        )
+                    },
+                    onToggleFavourite = {
+                        viewModel.toggleFavourite(it)
+                    },
+                    dismissable = true
+                )
+                Divider(
+                    color = Color.LightGray,
+                    thickness = 1.dp
+                )
+            }
         }
     }
 }
+
