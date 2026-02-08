@@ -30,7 +30,7 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(Color.DarkGray)
             .padding(24.dp)
     ) {
 

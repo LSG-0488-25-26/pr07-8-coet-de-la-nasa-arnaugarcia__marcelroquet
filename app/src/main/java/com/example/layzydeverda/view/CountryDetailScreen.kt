@@ -51,7 +51,7 @@ fun CountryDetail(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color.Black)
+            .background(Color.DarkGray)
             .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -95,14 +95,14 @@ fun CountryDetail(
                     ) {
                         Text(
                             text = country.name,
-                            fontSize = 36.sp,
+                            fontSize = 30.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(bottom = 24.dp)
                         )
 
                         Text(
                             text = "Capital: ${country.capital}",
-                            fontSize = 24.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Medium,
                             color = Color.White
                         )
@@ -111,14 +111,14 @@ fun CountryDetail(
 
                         Text(
                             text = "Capital: ${country.capital}",
-                            fontSize = 26.sp,
+                            fontSize = 22.sp,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(bottom = 16.dp)
                         )
 
                         Text(
                             text = "Població: ${country.population}",
-                            fontSize = 24.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Medium,
                             color = Color.White
                         )
