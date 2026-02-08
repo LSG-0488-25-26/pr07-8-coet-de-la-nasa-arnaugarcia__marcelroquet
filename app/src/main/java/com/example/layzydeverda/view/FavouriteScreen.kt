@@ -32,7 +32,7 @@ fun FavoriteScreen(navController: NavController, viewModel: ApiViewModel) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.Black)
+                .background(Color.DarkGray)
         ) {
             EmptyFavoritesMessage(
 
