@@ -43,7 +43,7 @@ fun CountryDetail(
     modifier: Modifier = Modifier
 ) {
     val countries by viewModel.countryList.observeAsState(emptyList())
-    val country = remember { countries.find { it.name == countryName } }
+    val country = remember(countries) { countries.find { it.name == countryName } }
 
     val configuration = LocalConfiguration.current
     val isLandscape = configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
@@ -56,11 +56,11 @@ fun CountryDetail(
         contentAlignment = Alignment.Center
     ) {
         if (country != null) {
+
             if (isLandscape) {
                 Row(
                     modifier = Modifier.fillMaxSize(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Column(
                         modifier = Modifier.weight(1f),
@@ -81,59 +81,50 @@ fun CountryDetail(
                             onClick = { navController.popBackStack() },
                             modifier = Modifier.width(200.dp)
                         ) {
-                            Text("Tornar enrere", fontSize = 16.sp)
+                            Text("Tornar enrere")
                         }
                     }
 
                     Spacer(modifier = Modifier.width(32.dp))
 
-
                     Column(
                         modifier = Modifier.weight(1f),
-                        horizontalAlignment = Alignment.Start,
-                        verticalArrangement = Arrangement.Center
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         Text(
                             text = country.name,
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(bottom = 24.dp)
+                            color = Color.White
                         )
 
                         Text(
                             text = "Capital: ${country.capital}",
                             fontSize = 20.sp,
-                            fontWeight = FontWeight.Medium,
                             color = Color.White
                         )
 
-                        Spacer(modifier = Modifier.height(16.dp))
-
                         Text(
-                            text = "Capital: ${country.capital}",
-                            fontSize = 22.sp,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.padding(bottom = 16.dp)
+                            text = "Regió: ${country.region}",
+                            fontSize = 20.sp,
+                            color = Color.White
                         )
 
                         Text(
                             text = "Població: ${country.population}",
                             fontSize = 20.sp,
-                            fontWeight = FontWeight.Medium,
                             color = Color.White
                         )
 
-                        Spacer(modifier = Modifier.height(8.dp))
-
                         Text(
-                            text = "Població: ${country.population}",
-                            fontSize = 26.sp,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.padding(bottom = 16.dp)
+                            text = if (country.isFav) "⭐ País preferit" else "☆ No és preferit",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = if (country.isFav) Color.Yellow else Color.LightGray
                         )
-
                     }
                 }
+
             } else {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -154,23 +145,37 @@ fun CountryDetail(
                     Text(
                         text = country.name,
                         fontSize = 32.sp,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
                         text = "Capital: ${country.capital}",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Medium,
+                        fontSize = 22.sp,
+                        color = Color.White
+                    )
+
+                    Text(
+                        text = "Regió: ${country.region}",
+                        fontSize = 22.sp,
+                        color = Color.White
+                    )
+
+                    Text(
+                        text = "Població: ${country.population}",
+                        fontSize = 22.sp,
+                        color = Color.White
                     )
 
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Text(
-                        text = "Població: ${country.population}",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Medium,
+                        text = if (country.isFav) "⭐ País preferit" else "☆ No és preferit",
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = if (country.isFav) Color.Yellow else Color.LightGray
                     )
 
                     Spacer(modifier = Modifier.height(32.dp))
@@ -183,31 +188,14 @@ fun CountryDetail(
                     }
                 }
             }
+
         } else {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = "País no trobat",
-                    fontSize = 22.sp,
-                    color = Color.Red,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(bottom = 20.dp)
-                )
-
-                Button(
-                    onClick = { navController.popBackStack() },
-                    modifier = Modifier.padding(top = 20.dp)
-                ) {
-                    Text(
-                        "Tornar enrere", fontSize = 18.sp,
-                        color = Color.White
-                    )
-
-                }
-            }
+            Text(
+                text = "País no trobat",
+                fontSize = 22.sp,
+                color = Color.Red,
+                fontWeight = FontWeight.Bold
+            )
         }
     }
 }
