@@ -4,6 +4,7 @@ import androidx.compose.material3.Card
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 //noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.DismissDirection
 //noinspection UsingMaterialAndMaterial3Libraries
@@ -23,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -86,47 +88,62 @@ fun CountryItem(
         },
         dismissContent = {
             Card(
-                colors = CardDefaults.cardColors(
-                    containerColor = Color.DarkGray
-                ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { onItemSelected(country.name) }
-                    .height(70.dp),
-                shape = RectangleShape,
+                    .height(90.dp)
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
+                shape = RoundedCornerShape(16.dp),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 6.dp
+                ),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant
+                )
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp, 8.dp)
+                        .fillMaxSize()
+                        .padding(16.dp)
                 ) {
                     GlideImage(
                         model = country.flagUrl,
-                        contentDescription = country.flagUrl,
+                        contentDescription = country.name,
                         modifier = Modifier
-                            .height(40.dp)
-                            .aspectRatio(1.6f),   // Aspect ratio de bandera normal 16:9
+                            .height(44.dp)
+                            .aspectRatio(1.6f)
+                            .clip(RoundedCornerShape(8.dp)),
                         contentScale = ContentScale.Crop
                     )
 
                     Spacer(modifier = Modifier.width(12.dp))
+
                     Column(
                         modifier = Modifier.weight(1f)
                     ) {
                         Text(
                             text = country.name,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold
                         )
                         Text(
                             text = "Capital: ${country.capital}",
-                            fontSize = MaterialTheme.typography.bodySmall.fontSize,
-                            color = Color.White
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+
+                    if (country.isFav) {
+                        Icon(
+                            imageVector = Icons.Filled.Favorite,
+                            contentDescription = "Favourite",
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 }
             }
+
         }
     )
 }
