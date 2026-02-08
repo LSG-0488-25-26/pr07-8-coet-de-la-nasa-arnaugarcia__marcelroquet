@@ -1,6 +1,8 @@
 package com.example.layzydeverda.view
+
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.background
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
@@ -28,12 +30,13 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(Color.Black)
             .padding(24.dp)
     ) {
 
         Text(
             text = "Score: $score",
-            color = Color.Black,
+            color = Color.White,
             modifier = Modifier.align(Alignment.TopEnd)
         )
 
@@ -59,7 +62,10 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
-                    Text("What country is this flag from?")
+                    Text(
+                        "What country is this flag from?",
+                        color = Color.White
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Row(modifier = Modifier.fillMaxWidth()) {
@@ -70,8 +76,13 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                             },
                             modifier = Modifier.weight(1f)
                         ) {
-                            Text(country.answers[0], textAlign = TextAlign.Center)
+                            Text(
+                                country.answers[0],
+                                textAlign = TextAlign.Center,
+                                color = Color.White
+                            )
                         }
+                        Spacer(modifier = Modifier.width(8.dp))
 
                         Button(
                             onClick = {
@@ -80,7 +91,11 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                             },
                             modifier = Modifier.weight(1f)
                         ) {
-                            Text(country.answers[1], textAlign = TextAlign.Center)
+                            Text(
+                                country.answers[1],
+                                textAlign = TextAlign.Center,
+                                color = Color.White
+                            )
                         }
                     }
 
@@ -94,8 +109,13 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                             },
                             modifier = Modifier.weight(1f)
                         ) {
-                            Text(country.answers[2], textAlign = TextAlign.Center)
+                            Text(
+                                country.answers[2],
+                                textAlign = TextAlign.Center,
+                                color = Color.White
+                            )
                         }
+                        Spacer(modifier = Modifier.width(8.dp))
 
                         Button(
                             onClick = {
@@ -104,7 +124,11 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                             },
                             modifier = Modifier.weight(1f)
                         ) {
-                            Text(country.answers[3], textAlign = TextAlign.Center)
+                            Text(
+                                country.answers[3],
+                                textAlign = TextAlign.Center,
+                                color = Color.White
+                            )
                         }
                     }
                 }
@@ -117,7 +141,10 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                 verticalArrangement = Arrangement.Center
             ) {
 
-                Text("What country is this flag from?")
+                Text(
+                    "What country is this flag from?",
+                    color = Color.White
+                )
                 Spacer(modifier = Modifier.height(24.dp))
 
                 GlideImage(
@@ -139,8 +166,13 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                         },
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text(country.answers[0], textAlign = TextAlign.Center)
+                        Text(
+                            country.answers[0],
+                            textAlign = TextAlign.Center,
+                            color = Color.White
+                        )
                     }
+                    Spacer(modifier = Modifier.width(8.dp))
 
                     Button(
                         onClick = {
@@ -149,7 +181,11 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                         },
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text(country.answers[1], textAlign = TextAlign.Center)
+                        Text(
+                            country.answers[1],
+                            textAlign = TextAlign.Center,
+                            color = Color.White
+                        )
                     }
                 }
 
@@ -163,8 +199,13 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                         },
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text(country.answers[2], textAlign = TextAlign.Center)
+                        Text(
+                            country.answers[2],
+                            textAlign = TextAlign.Center,
+                            color = Color.White
+                        )
                     }
+                    Spacer(modifier = Modifier.width(8.dp))
 
                     Button(
                         onClick = {
@@ -173,7 +214,11 @@ fun QuizScreen(apiViewModel: ApiViewModel) {
                         },
                         modifier = Modifier.weight(1f)
                     ) {
-                        Text(country.answers[3], textAlign = TextAlign.Center)
+                        Text(
+                            country.answers[3],
+                            textAlign = TextAlign.Center,
+                            color = Color.White
+                        )
                     }
                 }
             }

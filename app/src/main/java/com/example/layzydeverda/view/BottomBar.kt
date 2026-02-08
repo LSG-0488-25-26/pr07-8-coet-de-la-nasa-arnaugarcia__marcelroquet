@@ -41,13 +41,7 @@ fun MyBottomBar(
         bottomNavigationItems.forEach { item ->
             NavigationBarItem(
 
-                icon = {
-                    Icon(
-                        imageVector = item.icon,
-                        contentDescription = null
-
-                    )
-                },
+                icon = { Icon(item.icon, contentDescription = null, tint = Color.White) },
                 selected = currentRoute == item.route,
                 onClick = {
                     if (currentRoute != item.route) {

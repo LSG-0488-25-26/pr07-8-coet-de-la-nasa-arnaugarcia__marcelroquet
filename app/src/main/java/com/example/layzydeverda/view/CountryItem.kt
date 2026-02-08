@@ -78,9 +78,9 @@ fun CountryItem(
                 contentAlignment = Alignment.CenterEnd
             ) {
                 when {
-                    dismissable -> Icon(Icons.Filled.Delete, contentDescription = "Delete")
-                    country.isFav -> Icon(Icons.Filled.Favorite, contentDescription = "Fav")
-                    else -> Icon(Icons.Filled.FavoriteBorder, contentDescription = "Not Fav")
+                    dismissable -> Icon(Icons.Filled.Delete, contentDescription = "Delete", tint = Color.White)
+                    country.isFav -> Icon(Icons.Filled.Favorite, contentDescription = "Fav", tint = Color.White)
+                    else -> Icon(Icons.Filled.FavoriteBorder, contentDescription = "Not Fav", tint = Color.White)
                 }
             }
         },
@@ -117,11 +117,12 @@ fun CountryItem(
                         Text(
                             text = country.name,
                             fontWeight = FontWeight.Bold,
+                            color = Color.White
                         )
                         Text(
                             text = "Capital: ${country.capital}",
-                            fontSize = MaterialTheme.typography.bodySmall.fontSize
-
+                            fontSize = MaterialTheme.typography.bodySmall.fontSize,
+                            color = Color.White
                         )
                     }
                 }

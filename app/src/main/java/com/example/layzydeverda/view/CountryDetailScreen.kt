@@ -2,6 +2,10 @@ package com.example.layzydeverda.view
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.*
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -47,7 +51,8 @@ fun CountryDetail(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .padding(24.dp),
+            .background(Color.Black)
+            .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
         if (country != null) {
@@ -82,6 +87,7 @@ fun CountryDetail(
 
                     Spacer(modifier = Modifier.width(32.dp))
 
+
                     Column(
                         modifier = Modifier.weight(1f),
                         horizontalAlignment = Alignment.Start,
@@ -94,6 +100,13 @@ fun CountryDetail(
                             modifier = Modifier.padding(bottom = 24.dp)
                         )
 
+                        Text(
+                            text = "Capital: ${country.capital}",
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = Color.White
+                        )
+
                         Spacer(modifier = Modifier.height(16.dp))
 
                         Text(
@@ -101,6 +114,13 @@ fun CountryDetail(
                             fontSize = 26.sp,
                             fontWeight = FontWeight.Medium,
                             modifier = Modifier.padding(bottom = 16.dp)
+                        )
+
+                        Text(
+                            text = "Població: ${country.population}",
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = Color.White
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))
@@ -178,9 +198,14 @@ fun CountryDetail(
                 )
 
                 Button(
-                    onClick = { navController.popBackStack() }
+                    onClick = { navController.popBackStack() },
+                    modifier = Modifier.padding(top = 20.dp)
                 ) {
-                    Text("Tornar enrere", fontSize = 18.sp)
+                    Text(
+                        "Tornar enrere", fontSize = 18.sp,
+                        color = Color.White
+                    )
+
                 }
             }
         }

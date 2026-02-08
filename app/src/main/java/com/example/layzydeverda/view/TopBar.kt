@@ -54,7 +54,7 @@ fun MyTopAppBar(
         actions = {
             if (!searchActive) {
                 IconButton(onClick = { searchActive = true }) {
-                    Icon(Icons.Filled.Search, contentDescription = "Buscar")
+                    Icon(Icons.Filled.Search, contentDescription = "Buscar", tint = Color.White)
                 }
             }
         }
