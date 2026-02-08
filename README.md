@@ -37,7 +37,7 @@ Vista  on es mostra un **LazyColumn** amb la llista de països preferits del usu
 ## Quiz
 Vista  on es mostrà una bandera on l'usuari haurà d'adivinar el país entre quatre opcions.
 
-<img width="361" height="808" alt="image" src="https://github.com/user-attachments/assets/8900d1d9-1b27-47c4-8de0-f7696254f608" />
+<img width="238" height="505" alt="image" src="https://github.com/user-attachments/assets/8900d1d9-1b27-47c4-8de0-f7696254f608" />
 
 
 ## Top Bar
@@ -45,7 +45,7 @@ El **TopBar** inclou una icona de lupa que permet:
 - Mostrar o amagar el **Search Bar**
 - Filtrar països pel seu nom
 
-<img width="370" height="792" alt="image" src="https://github.com/user-attachments/assets/e2064dfb-ec03-46b4-9184-ddf178eb829b" />
+<img width="238" height="505" alt="image" src="https://github.com/user-attachments/assets/e2064dfb-ec03-46b4-9184-ddf178eb829b" />
 
   
 ## Bottom Bar
